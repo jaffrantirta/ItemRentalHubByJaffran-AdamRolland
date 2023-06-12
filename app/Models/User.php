@@ -45,4 +45,9 @@ class User extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function roles($id)
+    {
+        return $this->db
+    }
 }
