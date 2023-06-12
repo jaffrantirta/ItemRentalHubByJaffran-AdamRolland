@@ -4,22 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class Item extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
+    protected $table            = 'items';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_category',
         'name',
-        'email',
-        'phone',
-        'password',
-        'created_at',
-        'updated_at'
+        'description',
+        'price_per_day',
+        'quantity_available'
     ];
 
     // Dates

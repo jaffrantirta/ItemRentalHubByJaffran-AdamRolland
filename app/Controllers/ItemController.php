@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Item extends BaseController
+class ItemController extends BaseController
 {
     public function index()
     {
