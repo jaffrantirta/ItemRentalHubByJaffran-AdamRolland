@@ -19,13 +19,13 @@
 
         <div class="grid md:flex md:flex-wrap gap-5 justify-center">
         <?php foreach ($items as $item) { ?>
-            <div class="border-2 rounded-3xl md:w-1/4">
+            <a href="<?php echo base_url('item/'.$item['id']); ?>" class="border-2 rounded-3xl md:w-1/4">
                 <img class="rounded-3xl" src="<?php echo $item['image'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' : $item['image'] ?>"/>
                 <div class="p-5">
                     <p class="font-bold"><?php echo $item['name'] ?></p>
                     <p class="text-xl">Rp<?php echo number_format($item['price_per_day']) ?>/hari</p>
                 </div>
-            </div>
+        </a>
             <?php } ?>
         </div>
     </div>

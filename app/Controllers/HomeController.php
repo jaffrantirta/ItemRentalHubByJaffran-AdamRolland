@@ -13,13 +13,15 @@ class HomeController extends BaseController
 
         $data['items'] = $itemModel->findAll();
         $data['categories'] = $itemCategoryModel->findAll();
-        
+
         return view('main/home', $data);
     }
     public function showDetailItem($itemId)
     {
         $itemModel = new Item();
-        $data['item'] = $itemModel->find($itemId);
+        $data['item'] = $itemModel->join('items_category', 'items_category.id = items.id_category')
+        ->select('items.*, items_category.name as category_name')
+        ->find($itemId);
         return view('main/detail_item', $data);
     }
 }

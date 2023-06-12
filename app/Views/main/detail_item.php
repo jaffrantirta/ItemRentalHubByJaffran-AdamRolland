@@ -4,18 +4,18 @@
 <div class="p-10">
 <div class="mt-5 grid md:grid-cols-3 grid-cols-1 gap-5 p-5">
     <div>
-    <img class="rounded-3xl" src="https://www.ruparupa.com/blog/wp-content/uploads/2022/03/white-wall-living-room-have-sofa-decoration-3d-rendering.jpg"/>
+    <img class="rounded-3xl" src="<?php echo $item['image'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' : $item['image'] ?>"/>
     </div>
     <div>
-        <p class="font-bold text-3xl">Bagus ini</p>
-        <p class="text-4xl">Rp100.000/day</p>
+        <p class="font-bold text-3xl"><?php echo $item['name'] ?></p>
+        <p class="text-4xl">Rp<?php echo number_format($item['price_per_day']) ?>/hari</p>
         <p class="mt-5 font-bold">Kategori</p>
-        <p>Lighting</p>
+        <p><?php echo $item['category_name'] ?></p>
         <p class="mt-5 font-bold">Deskripsi</p>
-        <p>Consequat irure nostrud magna tempor laborum enim reprehenderit Lorem quis nostrud eiusmod officia. Aute exercitation cillum laborum minim ullamco pariatur veniam nostrud ea et est laboris labore irure. Enim nisi adipisicing ullamco eu consectetur qui culpa consequat qui minim ad. Velit duis amet non et voluptate culpa. Aute Lorem cupidatat incididunt nulla culpa nisi officia anim fugiat occaecat nisi aute excepteur sit. Id officia adipisicing ad nostrud reprehenderit cillum elit ipsum. Adipisicing elit nisi ut irure culpa excepteur proident dolor adipisicing sint reprehenderit commodo.</p>
+        <p><?php echo $item['description'] ?></p>
     </div>
     <div>
-        <p>Barang tersedia: <span class="font-bold">4</span>
+        <p>Barang tersedia: <span class="font-bold"><?php echo $item['quantity_available'] ?></span>
         <div class="grid grid-cols-3 gap-5 mt-5">
             <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">+</button>
             <input class="border-2 rounded-lg text-center" value="1"/>
