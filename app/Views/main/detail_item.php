@@ -15,13 +15,25 @@
         <p><?php echo $item['description'] ?></p>
     </div>
     <div>
-        <p>Barang tersedia: <span class="font-bold"><?php echo $item['quantity_available'] ?></span>
-        <div class="grid grid-cols-3 gap-5 mt-5">
-            <!-- <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">-</button> -->
-            <input class="border-2 rounded-lg text-center" value="1" type="number"/>
-            <!-- <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">+</button> -->
-        </div>
-        <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 mt-5 transaction-all duration-500">Tambah</button>
+        <form action="/cart" method="post">
+            <p>Barang tersedia: <span class="font-bold"><?php echo $item['quantity_available'] ?></span>
+            <div class="grid grid-cols-3 gap-5 mt-5">
+            <input name="item_id" value="<?php echo $item['id'] ?>" hidden/>
+            <div>
+                <label>Tanggal ambil</label>
+            <input name="start_date" type="date" class="border-2 rounded-lg text-center"/>
+            </div>
+            <div>
+                <label>Tanggal kembali</label>
+            <input name="end_date" type="date" class="border-2 rounded-lg text-center"/>
+            </div>
+            <div class="">
+                <label>Jumlah</label>
+            <input name="qty" class="border-2 w-full rounded-lg text-center" value="1" type="number"/>
+            </div>
+            </div>
+            <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 mt-5 transaction-all duration-500">Tambah</button>
+        </form>
     </div>
 </div>
 
