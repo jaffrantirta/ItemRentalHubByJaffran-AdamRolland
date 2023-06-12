@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\User;
+use App\Models\Role;
 
 class SignupController extends BaseController
 {
@@ -34,6 +35,23 @@ class SignupController extends BaseController
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
             $userModel->save($data);
+
+            // Get the user ID of the latest saved user
+    $userId = $userModel->insertID();
+
+    //get role customer
+    $roleModel = new Role();
+    $role = $roleModel->where('name', 'customer')->first();
+
+    // Save the user role
+    $userRoleModel = new UserRole();
+    $userRoleData = [
+        'user_id' => $userId,
+        'role_id' => $role->id
+    ];
+    $userRoleModel->save($userRoleData);
+
+    return redirect()->to('/signin');
             return redirect()->to('/signin');
         } else {
             $data['validation'] = $this->validator;

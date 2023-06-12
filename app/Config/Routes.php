@@ -46,6 +46,9 @@ $routes->get('/rentaldetail', 'RentalDetailController::index', ['filter' => 'aut
 $routes->get('/report', 'ReportController::index', ['filter' => 'authGuard']);
 $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 
+//customer
+$routes->get('/home', 'Home::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

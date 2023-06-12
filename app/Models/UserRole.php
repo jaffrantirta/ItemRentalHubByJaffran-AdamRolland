@@ -4,17 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Role extends Model
+class UserRole extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'roles';
+    protected $table            = 'user_roles';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name'
+        'user_id',
+        'role_id'
     ];
 
     // Dates
@@ -40,9 +41,4 @@ class Role extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function users()
-    {
-        return $this->belongsToMany(new User);
-    }
 }
