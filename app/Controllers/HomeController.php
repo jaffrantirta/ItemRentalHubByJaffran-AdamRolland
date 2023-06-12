@@ -2,17 +2,24 @@
 
 namespace App\Controllers;
 use App\Models\Item;
+use App\Models\ItemCategory;
 
 class HomeController extends BaseController
 {
     public function index()
     {
-        return view('main/home');
+        $itemModel = new Item();
+        $itemCategoryModel = new ItemCategory();
+
+        $data['items'] = $itemModel->findAll();
+        $data['categories'] = $itemCategoryModel->findAll();
+        
+        return view('main/home', $data);
     }
     public function showDetailItem($itemId)
     {
         $itemModel = new Item();
-        $item = $itemModel->find($itemId);
-        return view('main/detail_item', ['item' => $item]);
+        $data['item'] = $itemModel->find($itemId);
+        return view('main/detail_item', $data);
     }
 }
