@@ -17,9 +17,9 @@
     <div>
         <p>Barang tersedia: <span class="font-bold"><?php echo $item['quantity_available'] ?></span>
         <div class="grid grid-cols-3 gap-5 mt-5">
-            <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">+</button>
-            <input class="border-2 rounded-lg text-center" value="1"/>
-            <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">-</button>
+            <!-- <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">-</button> -->
+            <input class="border-2 rounded-lg text-center" value="1" type="number"/>
+            <!-- <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 transaction-all duration-500">+</button> -->
         </div>
         <button class="p-1 w-full bg-blue-300 rounded-lg text-white hover:bg-blue-200 mt-5 transaction-all duration-500">Tambah</button>
     </div>
@@ -30,14 +30,14 @@
 <div class="mt-10">
 <p class="font-bold text-xl">Barang lainnya</p>
 <div class="grid md:flex md:flex-wrap gap-5 justify-center">
-        <?php for($i = 0; $i < 10; $i++) { ?>
-            <div class="border-2 rounded-3xl md:w-1/4">
-                <img class="rounded-3xl" src="https://www.ruparupa.com/blog/wp-content/uploads/2022/03/white-wall-living-room-have-sofa-decoration-3d-rendering.jpg"/>
+<?php foreach ($items as $item) { ?>
+            <a href="<?php echo base_url('item/'.$item['id']); ?>" class="border-2 rounded-3xl md:w-1/4">
+                <img class="rounded-3xl" src="<?php echo $item['image'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' : $item['image'] ?>"/>
                 <div class="p-5">
-                    <p class="font-bold">Rinso anti noda</p>
-                    <p class="text-xl">Rp100.000/day</p>
+                    <p class="font-bold"><?php echo $item['name'] ?></p>
+                    <p class="text-xl">Rp<?php echo number_format($item['price_per_day']) ?>/hari</p>
                 </div>
-            </div>
+            </a>
             <?php } ?>
         </div>
 </div>
