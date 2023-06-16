@@ -41,6 +41,7 @@ $routes->get('/itemcategory/create', 'ItemCategoryController::create', ['filter'
 $routes->post('/itemcategory/store', 'ItemCategoryController::store', ['filter' => 'authGuard']);
 
 $routes->get('/item', 'ItemController::index', ['filter' => 'authGuard']);
+$routes->get('/item/create', 'ItemController::create', ['filter' => 'authGuard']);
 $routes->get('/rentaldata', 'RentalDataController::index', ['filter' => 'authGuard']);
 $routes->get('/rentaldetail', 'RentalDetailController::index', ['filter' => 'authGuard']);
 $routes->get('/report', 'ReportController::index', ['filter' => 'authGuard']);

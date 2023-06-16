@@ -8,6 +8,8 @@
     <link href="<?= base_url('/dashboard_assets/cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css')?>" rel="stylesheet" crossorigin="anonymous" />
     <link href="<?= base_url('/dashboard_assets/cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css')?>" rel="stylesheet" crossorigin="anonymous" />
     <link rel="icon" type="image/x-icon" href="/images/logo.png" />
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
     <script src="<?= base_url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js')?>"></script>
     <script src="<?= base_url('https://cdn.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js')?>"></script>
     <script data-search-pseudo-elements defer src="<?= base_url('/dashboard_assets/cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js')?>" crossorigin="anonymous"></script>

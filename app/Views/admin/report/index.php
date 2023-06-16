@@ -7,20 +7,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>rental data</h2>
+                    <h2>Report</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Item name</th>
-                                    <th>Price</th>
-                                    <th>Qty</th>
+                                    <th>transaction</th>
+                                    <th>rental</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>created</th>
-                                    <th>action</th>
                                 </tr>
                             </thead>
                             <tbody>

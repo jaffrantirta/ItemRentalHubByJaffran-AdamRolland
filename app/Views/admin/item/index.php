@@ -10,7 +10,7 @@
                     <h2>Category Item</h2>
                 </div>
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary mb-2">add</a>
+                    <a href="<?= base_url('/item/create') ?>" class="btn btn-primary mb-2">add</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
