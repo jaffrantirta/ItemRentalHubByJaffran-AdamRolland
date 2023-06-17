@@ -3,6 +3,12 @@
 <?= $this->section('content') ?>
 
 <div class='p-10'>
+  <?php if(session()->get('cart') ===  null){ ?>
+    <div class="flex justify-center">
+      <img class="w-64" src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg" />
+    </div>
+    <p class="text-xl text-center">Tidak ada barang</p>
+    <?php }else{ ?>
 <table class="min-w-full divide-y divide-gray-200">
   <thead>
     <tr>
@@ -72,9 +78,11 @@
   <p class='text-xl'>Total <span class='font-bold'>Rp<?php echo number_format($totalPrice) ?></span></p>
 </div>
 
-<div class="flex justify-center">
+<form class="flex justify-center" action="/transaction" method="post">
   <button class="p-1 bg-blue-300 rounded-lg text-white hover:bg-blue-200 mt-5 transition-all duration-500 w-20">Pesan</button>
-</div>
+</form>
+
+<?php } ?>
 
 
 </div>

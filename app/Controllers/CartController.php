@@ -56,6 +56,6 @@ class CartController extends BaseController
         // Save the updated cart back to the session
         $session->set('cart', $cart);
 
-        return redirect('home');
+        return redirect('cart');
     }
 }

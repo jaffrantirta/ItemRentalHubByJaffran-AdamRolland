@@ -53,6 +53,10 @@ $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
 $routes->get('/cart', 'CartController::index');
 $routes->post('/cart', 'CartController::addToCart');
 
+//transaction
+$routes->post('/transaction', 'TransactionController::store');
+$routes->get('/transaction', 'TransactionController::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
