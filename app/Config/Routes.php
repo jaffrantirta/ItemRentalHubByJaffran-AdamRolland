@@ -50,7 +50,8 @@ $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']
 //customer
 $routes->get('/home', 'HomeController::index');
 $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
-$routes->post('/cart', 'HomeController::addToCart');
+$routes->get('/cart', 'CartController::index');
+$routes->post('/cart', 'CartController::addToCart');
 
 /*
  * --------------------------------------------------------------------

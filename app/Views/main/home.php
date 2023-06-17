@@ -6,13 +6,14 @@
     <div class="">
     <p class="font-bold text-xl">Kategori</p>
     <div class="flex overflow-scroll my-5 gap-5">
-        <?php foreach ($categories as $category) { ?>
-            <div class="flex p-5 border-2 rounded-3xl items-center justify-center inline-flex px-10">
-                <img class="mr-3" src="https://images.tokopedia.net/img/cache/100-square/iEWsxH/2021/10/5/461aa510-5537-41b7-92d4-684d39c9930e.png"/>
-                <p><?php echo $category['name'] ?></p>
-            </div>
-        <?php } ?>
-    </div>
+    <?php foreach ($categories as $category) { ?>
+        <div class="flex p-5 border-2 rounded-3xl items-center justify-center px-10">
+            <img class="mr-3" src="https://images.tokopedia.net/img/cache/100-square/iEWsxH/2021/10/5/461aa510-5537-41b7-92d4-684d39c9930e.png"/>
+            <p style="white-space: nowrap;"><?php echo $category['name'] ?></p>
+        </div>
+    <?php } ?>
+</div>
+
 </div>
 
 
