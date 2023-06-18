@@ -55,5 +55,10 @@ class SigninController extends BaseController
         return redirect()->to('/signin');
     }
 }
+function logout() {
+    session()->destroy();
+    return redirect('signin');
+    
+}
 
 }

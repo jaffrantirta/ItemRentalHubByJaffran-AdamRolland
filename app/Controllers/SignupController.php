@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\UserRole;
 
 class SignupController extends BaseController
 {
