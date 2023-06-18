@@ -63,35 +63,27 @@
                         </a>
                         <a class="nav-link" href="<?= base_url('/itemcategory')?>">
                             <div class="nav-link-icon"><i data-feather="git-merge"></i></div>
-                            category Item
+                            Kategori
                         </a>
                         <a class="nav-link" href="<?= base_url('/item')?>">
                             <div class="nav-link-icon"><i data-feather="box"></i></div>
-                            Item
-                        </a>
-                        <a class="nav-link" href="#">
-                            <div class="nav-link-icon"><i data-feather="command"></i></div>
-                            rental data
-                        </a>
-                        <a class="nav-link" href="#">
-                            <div class="nav-link-icon"><i data-feather="bookmark"></i></div>
-                            rental detail
+                            Barang
                         </a>
                         <a class="nav-link" href="#">
                             <div class="nav-link-icon"><i data-feather="book"></i></div>
-                            report
+                            Pesanan
                         </a>
                         <a class="nav-link" href="#">
                             <div class="nav-link-icon"><i data-feather="users"></i></div>
-                            customers
+                            Customer
                         </a>
                         <a class="nav-link" href="#">
-                            <div class="nav-link-icon"><i data-feather="settings"></i></div>
-                           Setting
+                            <div class="nav-link-icon"><i data-feather="command"></i></div>
+                            Laporan
                         </a>
                         <a class="nav-link" href="#">
                             <div class="nav-link-icon"><i data-feather="power"></i></div>
-                           Log Out
+                           Logout
                         </a>
                     </div>
                 </div>

@@ -7,16 +7,15 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>Category Item</h2>
+                    <h2>Kategori</h2>
                 </div>
                 <div class="card-body">
-                    <a href="<?= base_url('/itemcategory/create') ?>" class="btn btn-primary mb-2">add</a>
+                    <a href="<?= base_url('/itemcategory/create') ?>" class="btn btn-primary mb-2">Tambah</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>created</th>
                                     <th>action</th>
                                 </tr>
                             </thead>
@@ -26,7 +25,6 @@
                                     ?>
                                     <tr>
                                         <td><?= $item['name'] ?></td>
-                                        <td><?= $item['created_at'] ?></td>
                                         <td>
                                             <a href="#"class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a>
                                             <form class="d-inline" action="#" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
