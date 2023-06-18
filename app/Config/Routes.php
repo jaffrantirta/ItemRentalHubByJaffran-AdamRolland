@@ -55,7 +55,9 @@ $routes->post('/cart', 'CartController::addToCart');
 
 //transaction
 $routes->post('/transaction', 'TransactionController::store');
+$routes->post('/transaction/(:num)', 'TransactionController::storeReceipt/$1');
 $routes->get('/transaction', 'TransactionController::index');
+$routes->get('/transaction/(:num)', 'TransactionController::show/$1');
 
 /*
  * --------------------------------------------------------------------

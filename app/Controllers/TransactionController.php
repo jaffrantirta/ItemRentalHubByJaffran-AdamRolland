@@ -5,11 +5,37 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use CodeIgniter\Files\File;
 
 class TransactionController extends BaseController
 {
     public function index()
     {
+        $transactionModel = new Transaction();
+        $data['transactions'] = $transactionModel->where('user_id', session()->get('id'))->findAll();
+        return view('main/order', $data);
+
+    }
+    public function show($transaction_id)
+    {
+        $transactionDetailModel = new TransactionDetail();
+        $transactionModel = new Transaction();
+        $data['transaction_details'] = $transactionDetailModel->where('transaction_id', $transaction_id)
+        ->join('items', 'items.id = transaction_details.item_id')
+        ->findAll();
+        $data['transaction'] = $transactionModel->find($transaction_id);
+        return view('main/detail_order', $data);
+
+    }
+    function storeReceipt($transaction_id) {
+        $file = $this->request->getFile('file');
+        if ($file->isValid() && !$file->hasMoved()) {
+            $file->move('./uploads', $file->getName());
+            $transactionModel = new Transaction();
+            $transactionModel->update($transaction_id, ['receipt' => $file->getName(), 'status' => 'checking']);
+            return redirect('transaction');
+        }
+        return 'error';
         
     }
     public function store()

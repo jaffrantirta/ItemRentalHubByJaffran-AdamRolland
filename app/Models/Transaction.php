@@ -19,7 +19,8 @@ class Transaction extends Model
         'grand_total',
         'created_at',
         'updated_at',
-        'status'
+        'status',
+        'receipt'
     ];
 
     // Dates
