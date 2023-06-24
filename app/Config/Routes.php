@@ -36,9 +36,14 @@ $routes->match(['get', 'post'], 'SignupController/store', 'SignupController::sto
 $routes->match(['get', 'post'], 'SigninController/loginAuth', 'SigninController::loginAuth');
 $routes->get('/signin', 'SigninController::index');
 $routes->get('/profile', 'ProfileController::index', ['filter' => 'authGuard']);
+
+//item category
 $routes->get('/itemcategory', 'ItemCategoryController::index', ['filter' => 'authGuard']);
 $routes->get('/itemcategory/create', 'ItemCategoryController::create', ['filter' => 'authGuard']);
+$routes->get('/itemcategory/edit/(:num)', 'ItemCategoryController::edit/$1', ['filter' => 'authGuard']);
 $routes->post('/itemcategory/store', 'ItemCategoryController::store', ['filter' => 'authGuard']);
+$routes->post('/itemcategory/update', 'ItemCategoryController::update', ['filter' => 'authGuard']);
+$routes->post('/itemcategory/delete/(:num)', 'ItemCategoryController::destroy/$1', ['filter' => 'authGuard']);
 
 $routes->get('/item', 'ItemController::index', ['filter' => 'authGuard']);
 $routes->get('/item/create', 'ItemController::create', ['filter' => 'authGuard']);

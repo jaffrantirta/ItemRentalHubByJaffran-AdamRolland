@@ -7,10 +7,14 @@ use App\Controllers\BaseController;
 
 class ItemCategoryController extends BaseController
 {
+    protected $model;
+    public function __construct()
+    {
+        $this->model = new ItemCategory();
+    }
     public function index()
     {
-        $itemcategory = new ItemCategory();
-        $data['itemcategory'] = $itemcategory->findAll();
+        $data['itemcategory'] = $this->model->findAll();
         return view('/admin/itemcategory/index',$data);
     }
 
@@ -21,41 +25,68 @@ class ItemCategoryController extends BaseController
 
     public function store()
     {
-        // Mengambil data yang di post oleh user
         $request = service('request');
         $postData = $request->getPost();
-// var_dump($postData['name']);
-// die();
         $input = $this->validate([
             'name' => 'required'
         ]);
 
         if (!$input) {
-            // Tampilkan bila ada masalah
-            session()->setFlashdata(['message' => 'Data tidak valid!', 'validation' => $this->validator]);
-            session()->setFlashdata('alert-class', 'alert-danger');
-
-            return redirect()->to(base_url('/itemcategory/create'));
+            session()->setFlashdata(['error' => 'Data tidak valid!', 'validation' => $this->validator]);
+            return redirect()->to('/itemcategory/create');
         }
 
-        $itemcategpry = new ItemCategory();
-        // Data yang akan di masukkan ke database
         $data = [
             'name' => $postData['name']
         ];
 
-        if ($itemcategpry->insert($data)) {
-            // Bila berhasil
-            session()->setFlashdata('message', 'Data berhasil disimpan!');
-            session()->setFlashdata('alert-class', 'alert-success');
-
-            return redirect()->to(base_url('/itemcategory'));
+        if ($this->model->insert($data)) {
+            session()->setFlashdata('success', 'Berhasil');
+            return redirect()->to('/itemcategory');
         } else {
-            // bila gagal
-            session()->setFlashdata('message', 'Data gagal disimpan!');
-            session()->setFlashdata('alert-class', 'alert-danger');
-            return redirect()->to(base_url('/itemcategory/create'));
+            session()->setFlashdata('error', 'Gagal');
+            return redirect()->to('/itemcategory/create');
         }
     }
+    function edit($id) {
+        $categoryModel = new ItemCategory();
+        $category = $categoryModel->find($id);
+
+        $data = [
+            'category' => $category,
+        ];
+
+        return view('admin/itemcategory/edit', $data);
+    }
+    public function update()
+{
+    $categoryId = $this->request->getPost('category_id');
+    $name = $this->request->getPost('name');
+
+    // Validate the form data
+    $validation = \Config\Services::validation();
+    $validation->setRules([
+        'name' => 'required',
+    ]);
+
+    if (!$validation->withRequest($this->request)->run()) {
+        return redirect()->back()->withInput()->with('error', $validation);
+    }
+    $data = [
+        'name' => $name,
+    ];
+    $this->model->update($categoryId, $data);
+    return redirect()->to('itemcategory/edit/' . $categoryId)->with('success', 'Item category updated successfully');
+}
+
+function destroy($id) {
+     $category = $this->model->find($id);
+     if (!$category) {
+         return redirect()->back()->with('error', 'Gagal');
+     }
+     $this->model->delete($id);
+
+     return redirect()->to('itemcategory')->with('success', 'Berhasil');
+}
 
 }
