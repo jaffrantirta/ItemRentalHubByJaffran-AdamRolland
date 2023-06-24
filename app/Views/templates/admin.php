@@ -17,6 +17,7 @@
     <title>Dashboard</title>
 </head>
 <?php helper('session'); ?>
+<?php helper('form'); ?>
 <body>
 <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <a class="navbar-brand h-100 text-truncate" href="">

@@ -18,7 +18,10 @@ class Item extends Model
         'name',
         'description',
         'price_per_day',
-        'quantity_available'
+        'quantity_available',
+        'image',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates
