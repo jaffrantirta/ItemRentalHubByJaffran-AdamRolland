@@ -38,8 +38,8 @@
                                     <td><?php echo $value['price_per_day'] ?></td>
                                     <td><?php echo $value['quantity_available'] ?></td>
                                     <td>
-                                        <a href="<?php echo base_url('') ?>" class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a>
-                                        <form class="d-inline" action="<?php echo base_url('') ?>" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
+                                        <a href="<?= base_url('item/edit/'.$value['id']) ?>" class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a>
+                                        <form class="d-inline" action="<?php echo base_url('item/delete/'.$value['id']) ?>" method="POST" onsubmit="return confirmDelete();">
                                             <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
                                                 <i data-feather="trash-2"></i>
                                             </button>
@@ -57,5 +57,15 @@
     </div>
 </div>
 </section>
+
+<script>
+    function confirmDelete() {
+        if (confirm('Apakah anda yakin akan menghapus data ini?')) {
+            document.getElementById('deleteForm').submit();
+        } else {
+            return false;
+        }
+    }
+</script>
     
 <?= $this->endSection() ?>

@@ -49,6 +49,9 @@ $routes->post('/itemcategory/delete/(:num)', 'ItemCategoryController::destroy/$1
 $routes->get('/item', 'ItemController::index', ['filter' => 'authGuard']);
 $routes->get('/item/create', 'ItemController::create', ['filter' => 'authGuard']);
 $routes->post('/item/store', 'ItemController::store', ['filter' => 'authGuard']);
+$routes->get('/item/edit/(:num)', 'ItemController::edit/$1', ['filter' => 'authGuard']);
+$routes->post('/item/update', 'ItemController::update', ['filter' => 'authGuard']);
+$routes->post('/item/delete/(:num)', 'ItemController::destroy/$1', ['filter' => 'authGuard']);
 
 $routes->get('/rentaldata', 'RentalDataController::index', ['filter' => 'authGuard']);
 $routes->get('/rentaldetail', 'RentalDetailController::index', ['filter' => 'authGuard']);

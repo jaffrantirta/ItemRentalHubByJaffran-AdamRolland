@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Item;
 use App\Models\ItemCategory;
+use App\Models\TransactionDetail;
 use App\Controllers\BaseController;
 
 class ItemController extends BaseController
@@ -72,5 +73,64 @@ class ItemController extends BaseController
 
         return redirect()->to('item')->with('success', 'Berhasil');
     }
+    function edit($id) {
+        $data['categories'] = $this->itemCategoryModel->findAll();
+        $data['item_data'] = $this->model->find($id);
+        // dd($data);
+        return view('admin/item/edit', $data);
+    }
+    public function update()
+    {
+        $validation = \Config\Services::validation();
+        
+        // Set validation rules
+        $validation->setRules([
+            'name' => 'required',
+            'id_category' => 'required',
+            'description' => 'required',
+            'price_per_day' => 'required|numeric',
+            'quantity_available' => 'required|integer',
+            'image' => 'max_size[image,2048]|mime_in[image,image/jpeg,image/png]'
+        ]);
+
+        // Run validation
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            // dd($validation->getErrors());
+        }
+
+        // Get validated form data
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'id_category' => $this->request->getPost('id_category'),
+            'description' => $this->request->getPost('description'),
+            'price_per_day' => $this->request->getPost('price_per_day'),
+            'quantity_available' => $this->request->getPost('quantity_available'),
+            'updated_at' => $this->currentDateTime
+        ];
+
+        // Upload image if provided
+        $imageFile = $this->request->getFile('image');
+        if ($imageFile && $imageFile->isValid() && !$imageFile->hasMoved()) {
+            $newName = $imageFile->getRandomName();
+            $imageFile->move('./uploads', $newName);
+            $data['image'] = $newName;
+        }
+
+        // Insert data into the database
+        $this->model->update($this->request->getPost('id'), $data);
+
+        return redirect()->to('item')->with('success', 'Berhasil');
+    }
+    function destroy($id) {
+        $transactionDetailModel = new TransactionDetail();
+        $td = $transactionDetailModel->where('item_id', $id)->find();
+        if (count($td) > 0) {
+            return redirect()->back()->with('error', 'Barang ini tidak bisa dihapus karena telah digunakan dalam transaksi');
+        }
+        $this->model->delete($id);
+   
+        return redirect()->to('item')->with('success', 'Berhasil');
+   }
 
 }
