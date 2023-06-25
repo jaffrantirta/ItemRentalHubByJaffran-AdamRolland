@@ -48,7 +48,7 @@ class SignupController extends BaseController
     $userRoleModel = new UserRole();
     $userRoleData = [
         'user_id' => $userId,
-        'role_id' => $role->id
+        'role_id' => 2
     ];
     $userRoleModel->save($userRoleData);
 

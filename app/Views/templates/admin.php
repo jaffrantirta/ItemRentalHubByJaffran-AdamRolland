@@ -42,9 +42,7 @@
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         Ganti Password
                     </a>
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item" href="<?= base_url(); ?>/logout">
                     <div class="dropdown-item-icon"><i data-feather="power"></i></div>
                  </a>
 
@@ -70,15 +68,15 @@
                             <div class="nav-link-icon"><i data-feather="box"></i></div>
                             Barang
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= base_url(); ?>/rentaldata">
                             <div class="nav-link-icon"><i data-feather="book"></i></div>
                             Pesanan
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= base_url()?>/customer">
                             <div class="nav-link-icon"><i data-feather="users"></i></div>
                             Customer
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= base_url(); ?>/report">
                             <div class="nav-link-icon"><i data-feather="command"></i></div>
                             Laporan
                         </a>

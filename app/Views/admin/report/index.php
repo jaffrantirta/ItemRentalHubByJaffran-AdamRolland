@@ -5,6 +5,26 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form action="">
+                        <div class="d-flex">
+                            <div>
+                                <label for="">start date</label>
+                                <input type="date" class="form-control" name="start">
+                            </div>
+                            <div class="ml-3">
+                            <label for="">end date</label>
+                                <input type="date" class="form-control" name="start">
+                            </div>
+                            
+                        </div>
+                        <div class="mt-2">
+                                <button class="btn btn-primary"><i class="fa fa-file-pdf"></i> &nbsp; cetak</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h2>Report</h2>

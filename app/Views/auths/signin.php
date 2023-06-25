@@ -6,7 +6,7 @@
         <div class="p-10 bg-slate-300 rounded-3xl m-10">
             <div class="flex flex-col mb-10">
                 <strong class="text-4xl">Selamat datang</strong>
-                <small>Masuk terlebih dahulu! Jika bekum memiliki akun <a class="text-blue-500 hover:text-blue-300" href="">klik disini</a></small>
+                <small>Masuk terlebih dahulu! Jika bekum memiliki akun <a class="text-blue-500 hover:text-blue-300" href="<?= base_url(); ?>/signup">klik disini</a></small>
             </div>
             <?php if (isset($validation)) : ?>
                 <div class="rounded-full my-3 p-3 text-center bg-amber-400">
