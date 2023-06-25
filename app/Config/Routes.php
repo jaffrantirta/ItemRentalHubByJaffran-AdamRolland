@@ -53,8 +53,12 @@ $routes->get('/item/edit/(:num)', 'ItemController::edit/$1', ['filter' => 'authG
 $routes->post('/item/update', 'ItemController::update', ['filter' => 'authGuard']);
 $routes->post('/item/delete/(:num)', 'ItemController::destroy/$1', ['filter' => 'authGuard']);
 
+//transaction
 $routes->get('/rentaldata', 'RentalDataController::index', ['filter' => 'authGuard']);
-$routes->get('/rentaldetail', 'RentalDetailController::index', ['filter' => 'authGuard']);
+$routes->get('/rentaldetail/(:num)', 'RentalDataController::show/$1', ['filter' => 'authGuard']);
+$routes->post('/action', 'RentalDataController::action', ['filter' => 'authGuard']);
+
+
 $routes->get('/report', 'ReportController::index', ['filter' => 'authGuard']);
 $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 

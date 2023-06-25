@@ -46,4 +46,12 @@ class Transaction extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getTransactionDetails($transactionId)
+    {
+        return $this->join('transaction_details', 'transactions.id = transaction_details.transaction_id')
+            ->join('items', 'items.id = transaction_details.item_id')
+            ->where('transaction_details.transaction_id', $transactionId)
+            ->findAll();
+    }
 }
