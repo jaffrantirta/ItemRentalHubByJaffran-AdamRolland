@@ -10,6 +10,7 @@
                     <h2>Detail Transaksi</h2>
                 </div>
                 <div class="card-body">
+                <a href="<?= base_url('/report/transaction/'.$transaction['id']) ?>" class="btn btn-primary mb-2">Download laporan</a>
                     <p>Kode transaksi : <?= $transaction['reference_code'] ?></p>
                     <p>Tanggal : <?= $transaction['created_at'] ?></p>
                     <p>Status : <?= $transaction['status'] ?></p>

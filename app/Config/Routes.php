@@ -58,8 +58,15 @@ $routes->get('/rentaldata', 'RentalDataController::index', ['filter' => 'authGua
 $routes->get('/rentaldetail/(:num)', 'RentalDataController::show/$1', ['filter' => 'authGuard']);
 $routes->post('/action', 'RentalDataController::action', ['filter' => 'authGuard']);
 
-
+//report
 $routes->get('/report', 'ReportController::index', ['filter' => 'authGuard']);
+$routes->get('/report/test', 'ReportController::generateReport', ['filter' => 'authGuard']);
+$routes->get('/report/item/(:num)', 'ReportController::itemReport/$1', ['filter' => 'authGuard']);
+$routes->get('/report/transaction/(:num)', 'ReportController::transactionDetailReport/$1', ['filter' => 'authGuard']);
+$routes->post('/report/transaction', 'ReportController::transactionReport', ['filter' => 'authGuard']);
+
+
+
 $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 
 //customer
@@ -75,6 +82,8 @@ $routes->post('/transaction', 'TransactionController::store');
 $routes->post('/transaction/(:num)', 'TransactionController::storeReceipt/$1');
 $routes->get('/transaction', 'TransactionController::index');
 $routes->get('/transaction/(:num)', 'TransactionController::show/$1');
+
+
 
 /*
  * --------------------------------------------------------------------
