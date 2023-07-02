@@ -43,8 +43,10 @@
                         Ganti Password
                     </a>
                     <a class="dropdown-item" href="<?= base_url(); ?>/logout">
-                    <div class="dropdown-item-icon"><i data-feather="power"></i></div>
-                 </a>
+                        <div class="dropdown-item-icon"><i data-feather="power"></i>
+                            Keluar
+                        </div>
+                    </a>
 
                 </div>
             </li>
@@ -56,7 +58,7 @@
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
                         <div class="sidenav-menu-heading">Main</div>
-                        <a class="nav-link" href="<?= base_url('/')?>">
+                        <a class="nav-link" href="<?= base_url('/profile')?>">
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
                             Dashboard
                         </a>
@@ -72,18 +74,18 @@
                             <div class="nav-link-icon"><i data-feather="book"></i></div>
                             Pesanan
                         </a>
-                        <a class="nav-link" href="<?= base_url()?>/customer">
+                        <!-- <a class="nav-link" href="<?= base_url()?>/customer">
                             <div class="nav-link-icon"><i data-feather="users"></i></div>
                             Customer
-                        </a>
+                        </a> -->
                         <a class="nav-link" href="<?= base_url(); ?>/report">
                             <div class="nav-link-icon"><i data-feather="command"></i></div>
                             Laporan
                         </a>
-                        <a class="nav-link" href="#">
+                        <!-- <a class="nav-link" href="#">
                             <div class="nav-link-icon"><i data-feather="power"></i></div>
                            Logout
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="sidenav-footer">
