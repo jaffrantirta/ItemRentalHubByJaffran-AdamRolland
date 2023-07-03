@@ -65,6 +65,10 @@ $routes->get('/report/item/(:num)', 'ReportController::itemReport/$1', ['filter'
 $routes->get('/report/transaction/(:num)', 'ReportController::transactionDetailReport/$1', ['filter' => 'authGuard']);
 $routes->post('/report/transaction', 'ReportController::transactionReport', ['filter' => 'authGuard']);
 
+//my account
+$routes->get('/account', 'AccountController::adminAccount', ['filter' => 'authGuard']);
+$routes->post('/account/update', 'AccountController::update', ['filter' => 'authGuard']);
+
 
 
 $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
