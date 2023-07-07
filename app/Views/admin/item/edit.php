@@ -10,7 +10,7 @@
                     <h2>Edit Barang</h2>
                 </div>
                 <div class="card-body">
-                <a href="<?= base_url('/report/item/'.$item_data['id']) ?>" class="btn btn-primary mb-2">Download laporan</a>
+                <!-- <a href="<?= base_url('/report/item/'.$item_data['id']) ?>" class="btn btn-primary mb-2">Download laporan</a> -->
                 <?php if (session()->getFlashdata('success')) : ?>
                             <div class="alert alert-success">
                                 <?= session()->getFlashdata('success') ?>

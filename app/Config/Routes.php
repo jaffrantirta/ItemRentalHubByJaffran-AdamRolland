@@ -30,7 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'HomeController::index');
-$routes->get('/', 'SigninController::index');
+// $routes->get('/login', 'SigninController::index');
 $routes->get('/signup', 'SignupController::index');
 $routes->match(['get', 'post'], 'SignupController/store', 'SignupController::store');
 $routes->match(['get', 'post'], 'SigninController/loginAuth', 'SigninController::loginAuth');
@@ -74,7 +74,7 @@ $routes->post('/account/update', 'AccountController::update', ['filter' => 'auth
 $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 
 //customer
-$routes->get('/home', 'HomeController::index');
+$routes->get('/', 'HomeController::index');
 $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
 $routes->get('/cart', 'CartController::index');
 $routes->post('/cart', 'CartController::addToCart');
