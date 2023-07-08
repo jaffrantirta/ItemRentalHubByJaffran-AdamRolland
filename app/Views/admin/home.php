@@ -12,7 +12,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 barang</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $items ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-box fa-2x text-gray-300"></i>
@@ -30,7 +30,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 pesanan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $transactions ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -50,7 +50,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 customer</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $customers ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -65,15 +65,12 @@
 
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-12">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Pesanan</h6>
-                    
+        <div class="card">
+                <div class="card-header">
+                    <h2>Pesanan yang perlu dicek</h2>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                <div class="table-responsive">
+                    <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
@@ -85,7 +82,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <?php foreach ($transactionsNeedChecks as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $value['reference_code'] ?></td>
+                                    <td><?= $value['grand_total'] ?></td>
+                                    <td class="text-uppercase 
+                                        <?php
+                                        if ($value['status'] === 'unpaid') {
+                                            echo 'bg-warning';
+                                        } elseif ($value['status'] === 'rejected') {
+                                            echo 'bg-danger';
+                                        } elseif ($value['status'] === 'confirm') {
+                                            echo 'bg-success';
+                                        } elseif ($value['status'] === 'checking') {
+                                            echo 'bg-info';
+                                        }
+                                        ?>
+                                        ">
+                                        <?= $value['status'] ?>
+                                    </td>
+                                    <td><?= $value['created_at'] ?></td>
+                                    <td><a href="<?= base_url('rentaldetail/'.$value['id']) ?>" class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a></td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
