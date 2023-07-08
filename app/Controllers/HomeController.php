@@ -17,6 +17,17 @@ class HomeController extends BaseController
 
         return view('main/home', $data);
     }
+    public function byCategory($categoryId)
+    {
+
+        $itemModel = new Item();
+        $itemCategoryModel = new ItemCategory();
+
+        $data['items'] = $itemModel->where('id_category', $categoryId)->findAll();
+        $data['categories'] = $itemCategoryModel->findAll();
+
+        return view('main/by_category', $data);
+    }
     public function showDetailItem($itemId)
     {
         $itemModel = new Item();

@@ -18,7 +18,7 @@
       </div>
       <div class="hidden md:block">
         <div class="ml-10 flex items-baseline space-x-4">
-          <a href="<?php echo base_url('/home') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Beranda</a>
+          <a href="<?php echo base_url('/') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Beranda</a>
           <a href="<?php echo base_url('/cart') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Keranjang</a>
           <a href="<?php echo base_url('/transaction') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pesanan</a>
           <a href="<?php echo base_url('/account') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Akun</a>

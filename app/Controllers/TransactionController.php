@@ -83,7 +83,7 @@ $diffInDays = $startDate->diff($endDate)->days;
         session()->set('cart', null);
     }
 
-    return redirect()->to('/home')->with('success', 'Transaction created successfully');
+    return redirect()->to('/')->with('success', 'Transaction created successfully');
 }
 
 }

@@ -75,6 +75,7 @@ $routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']
 
 //customer
 $routes->get('/', 'HomeController::index');
+$routes->get('/category/(:num)', 'HomeController::byCategory/$1');
 $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
 $routes->get('/cart', 'CartController::index');
 $routes->post('/cart', 'CartController::addToCart');
