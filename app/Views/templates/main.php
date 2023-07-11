@@ -21,7 +21,7 @@
           <a href="<?php echo base_url('/') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Beranda</a>
           <a href="<?php echo base_url('/cart') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Keranjang</a>
           <a href="<?php echo base_url('/transaction') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pesanan</a>
-          <a href="<?php echo base_url('/account') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Akun</a>
+          <a href="<?php echo base_url('/account/customer') ?>" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Akun</a>
         </div>
       </div>
     </div>

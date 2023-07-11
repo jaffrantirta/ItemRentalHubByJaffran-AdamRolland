@@ -42,7 +42,7 @@ class SigninController extends BaseController
 
             $session->set($ses_data);
             if($user['role_name'] === 'customer'){
-                return redirect()->to('/home');
+                return redirect()->to('/');
             }else{
                 return redirect()->to('/profile');
             }

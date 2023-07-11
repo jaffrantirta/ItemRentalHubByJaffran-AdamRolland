@@ -66,6 +66,8 @@ $routes->get('/report/transaction/(:num)', 'ReportController::transactionDetailR
 $routes->post('/report/transaction', 'ReportController::transactionReport', ['filter' => 'authGuard']);
 
 //my account
+
+$routes->get('/setting', 'AccountController::adminAccount', ['filter' => 'authGuard']);
 $routes->get('/account', 'AccountController::adminAccount', ['filter' => 'authGuard']);
 $routes->post('/account/update', 'AccountController::update', ['filter' => 'authGuard']);
 
@@ -80,7 +82,7 @@ $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
 $routes->get('/cart', 'CartController::index');
 $routes->post('/cart', 'CartController::addToCart');
 
-$routes->get('/account', 'AccountController::index');
+$routes->get('/account/customer', 'AccountController::index');
 $routes->get('/logout', 'SigninController::logout');
 
 $routes->post('/transaction', 'TransactionController::store');
