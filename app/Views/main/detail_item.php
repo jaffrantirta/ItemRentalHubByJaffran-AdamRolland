@@ -4,7 +4,7 @@
 <div class="p-10">
 <div class="mt-5 grid md:grid-cols-3 grid-cols-1 gap-5 p-5">
     <div>
-    <img class="rounded-3xl" src="<?php echo $item['image'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' : $item['image'] ?>"/>
+    <img class="rounded-3xl" src="<?php echo isset($item['image']) && !empty($item['image']) ? base_url('/uploads/'.$item['image']) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png'; ?>"/>
     </div>
     <div>
         <p class="font-bold text-3xl"><?php echo $item['name'] ?></p>
@@ -44,7 +44,7 @@
 <div class="grid md:flex md:flex-wrap gap-5 justify-center">
 <?php foreach ($items as $item) { ?>
             <a href="<?php echo base_url('item/'.$item['id']); ?>" class="border-2 rounded-3xl md:w-1/4">
-                <img class="rounded-3xl" src="<?php echo $item['image'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' : $item['image'] ?>"/>
+                <img class="rounded-3xl" src="<?php echo isset($item['image']) && !empty($item['image']) ? base_url('/uploads/'.$item['image']) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png'; ?>"/>
                 <div class="p-5">
                     <p class="font-bold"><?php echo $item['name'] ?></p>
                     <p class="text-xl">Rp<?php echo number_format($item['price_per_day']) ?>/hari</p>

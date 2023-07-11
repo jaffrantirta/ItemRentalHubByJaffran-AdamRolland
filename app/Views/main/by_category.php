@@ -8,7 +8,7 @@
     <div class="flex overflow-scroll my-5 gap-5">
     <?php foreach ($categories as $category) { ?>
         <a href="<?= base_url('category/'.$category['id']) ?>" class="flex p-5 border-2 rounded-3xl items-center justify-center px-10">
-            <img class="mr-3" src="https://images.tokopedia.net/img/cache/100-square/iEWsxH/2021/10/5/461aa510-5537-41b7-92d4-684d39c9930e.png"/>
+            <img class="mr-3" src="<?php echo isset($item['image']) && !empty($item['image']) ? base_url('/uploads/'.$item['image']) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png'; ?>"/>
             <p style="white-space: nowrap;"><?= $category['name'] ?></p>
     </a>
     <?php } ?>

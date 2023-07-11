@@ -5,7 +5,7 @@
 <div class='p-10'>
   <?php if(session()->get('cart') ===  null){ ?>
     <div class="flex justify-center">
-      <img class="w-64" src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg" />
+      <img class="w-64" src="<?php echo isset($item['image']) && !empty($item['image']) ? base_url('/uploads/'.$item['image']) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png'; ?>" />
     </div>
     <p class="text-xl text-center">Tidak ada barang</p>
     <?php }else{ ?>
