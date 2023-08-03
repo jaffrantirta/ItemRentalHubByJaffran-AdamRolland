@@ -46,59 +46,64 @@ class TransactionController extends BaseController
         
     }
     public function store()
-{
-    if(session()->get('id') === null) return redirect()->to('/signin');
-    $transactionModel = new Transaction();
-    $transactionModel->db->transStart();
-            $transactionData = [
-                'user_id' => session()->get('id'),
-                'reference_code' => time(),
-                'grand_total' => '',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-                'status' => 'unpaid'
-            ];
-            $transactionModel->save($transactionData);
-            $transactionId = $transactionModel->insertID();
-    $cart = session()->get('cart');
-    $totalPrice = 0;
-    foreach ($cart as $item) {  
-        $x = $item['item'];
-
-        $pricePerDay = $x['price_per_day'];
-$startDate = new \DateTime($item['start_date']);
-$endDate = new \DateTime($item['end_date']);
-$diffInDays = $startDate->diff($endDate)->days;
-
-        $itemCount = $item['qty'];
+    {
+        if (session()->get('id') === null) return redirect()->to('/signin');
+        $transactionModel = new Transaction();
+        $transactionModel->db->transStart();
+        $transactionData = [
+            'user_id' => session()->get('id'),
+            'reference_code' => time(),
+            'grand_total' => 0, // Initialize the grand total to 0
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+            'status' => 'unpaid'
+        ];
+        $transactionModel->save($transactionData);
+        $transactionId = $transactionModel->insertID();
+        $cart = session()->get('cart');
+        $totalPrice = 0;
+        foreach ($cart as $item) {
+            $x = $item['item'];
     
-        $subtotal = $pricePerDay * $diffInDays * $itemCount;
-        $totalPrice += $subtotal;
-
-        $itemid = $this->itemModel->find($x['id']);
-        
-        $dataitemModel = [
-            'quantity_available' => $itemid['quantity_available'] - $item['qty'],
-        ];
-
-        $this->itemModel->update($x['id'], $dataitemModel);
-
-        $transactionDetailModel = new TransactionDetail();
-        $transactionDetails = [
-            'transaction_id' => $transactionId,
-            'item_id' => $x['id'],
-            'qty' => $item['qty'],
-            'price' => $x['price_per_day'],
-            'total' => $subtotal,
-            'start_date' => $item['start_date'],
-            'end_date' => $item['end_date'],
-        ];
-        $transactionDetailModel->save($transactionDetails);
+            $pricePerDay = $x['price_per_day'];
+            $startDate = new \DateTime($item['start_date']);
+            $endDate = new \DateTime($item['end_date']);
+            $diffInDays = $startDate->diff($endDate)->days;
+    
+            $itemCount = $item['qty'];
+    
+            $subtotal = $pricePerDay * $diffInDays * $itemCount;
+            $totalPrice += $subtotal;
+    
+            $itemid = $this->itemModel->find($x['id']);
+    
+            $dataitemModel = [
+                'quantity_available' => $itemid['quantity_available'] - $item['qty'],
+            ];
+    
+            $this->itemModel->update($x['id'], $dataitemModel);
+    
+            $transactionDetailModel = new TransactionDetail();
+            $transactionDetails = [
+                'transaction_id' => $transactionId,
+                'item_id' => $x['id'],
+                'qty' => $item['qty'],
+                'price' => $x['price_per_day'],
+                'total' => $subtotal,
+                'start_date' => $item['start_date'],
+                'end_date' => $item['end_date'],
+            ];
+            $transactionDetailModel->save($transactionDetails);
+            session()->set('cart', null);
+        }
+    
+        // Update the grand_total in $transactionData with the calculated value
+        $transactionData['grand_total'] = $totalPrice;
+        $transactionModel->update($transactionId, $transactionData);
         $transactionModel->db->transComplete();
-        session()->set('cart', null);
+    
+        return redirect()->to('/')->with('success', 'Transaction created successfully');
     }
-
-    return redirect()->to('/')->with('success', 'Transaction created successfully');
-}
+    
 
 }

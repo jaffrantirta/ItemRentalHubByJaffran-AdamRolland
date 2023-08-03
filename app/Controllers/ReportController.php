@@ -256,7 +256,7 @@ class ReportController extends BaseController
         // Set table data
         foreach ($data as $row) {
             $pdf->Cell(40, 10, $row['reference_code'], 1);
-            $pdf->Cell(40, 10, $row['grand_total'], 1);
+            $pdf->Cell(40, 10, 'Rp'.number_format($row['grand_total']), 1);
             $pdf->Cell(40, 10, $row['status'], 1);
             $pdf->Cell(40, 10, $row['created_at'], 1);
             $pdf->Ln();
