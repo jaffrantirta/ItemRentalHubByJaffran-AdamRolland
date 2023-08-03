@@ -6,9 +6,16 @@ use App\Controllers\BaseController;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use CodeIgniter\Files\File;
+use App\Models\Item;
 
 class TransactionController extends BaseController
 {
+    protected $itemModel;
+    public function __construct()
+    {
+        $this->itemModel = new Item();
+    }
+
     public function index()
     {
         $transactionModel = new Transaction();
@@ -67,6 +74,14 @@ $diffInDays = $startDate->diff($endDate)->days;
     
         $subtotal = $pricePerDay * $diffInDays * $itemCount;
         $totalPrice += $subtotal;
+
+        $itemid = $this->itemModel->find($x['id']);
+        
+        $dataitemModel = [
+            'quantity_available' => $itemid['quantity_available'] - $item['qty'],
+        ];
+
+        $this->itemModel->update($x['id'], $dataitemModel);
 
         $transactionDetailModel = new TransactionDetail();
         $transactionDetails = [
