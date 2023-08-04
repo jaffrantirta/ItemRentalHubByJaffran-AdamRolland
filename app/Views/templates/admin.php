@@ -62,6 +62,10 @@
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
                             Dashboard
                         </a>
+                        <a class="nav-link" href="<?= base_url('/customer')?>">
+                            <div class="nav-link-icon"><i data-feather="users"></i></div>
+                            Pelanggan
+                        </a>
                         <a class="nav-link" href="<?= base_url('/itemcategory')?>">
                             <div class="nav-link-icon"><i data-feather="git-merge"></i></div>
                             Kategori

@@ -14,30 +14,22 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>name</th>
-                                    <th>email</th>
-                                    <th>action</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <!-- <th>action</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- @foreach ($category as $item)
+                                <?php foreach ($users as $key => $value) {?>
                                 <tr>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td><a href="{{ route('category.edit',$item->id) }}" class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a>
-                                    
-                                        <form class="d-inline" action="{{route('category.destroy', $item->id)}}" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                                <i data-feather="trash-2"></i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <td><?php echo $value['name'] ?></td>
+                                    <td><?php echo $value['email'] ?></td>
+                                    <!-- <td>
+                                        <a href="<?= base_url('customer/edit/'.$value['id']) ?>" class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit"></i></a>
+                                    </td> -->
                                    
                                 </tr>
-                                @endforeach -->
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
