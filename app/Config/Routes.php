@@ -73,9 +73,9 @@ $routes->post('/account/update', 'AccountController::update', ['filter' => 'auth
 
 
 
-$routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 
 //customer
+$routes->get('/customer', 'CustomerController::index', ['filter' => 'authGuard']);
 $routes->get('/', 'HomeController::index');
 $routes->get('/category/(:num)', 'HomeController::byCategory/$1');
 $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
