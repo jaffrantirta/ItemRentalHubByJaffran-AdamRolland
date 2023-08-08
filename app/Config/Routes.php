@@ -81,6 +81,8 @@ $routes->get('/category/(:num)', 'HomeController::byCategory/$1');
 $routes->get('/item/(:num)', 'HomeController::showDetailItem/$1');
 $routes->get('/cart', 'CartController::index');
 $routes->post('/cart', 'CartController::addToCart');
+$routes->get('cart/remove/(:any)', 'CartController::removeFromCart/$1');
+
 
 $routes->get('/account/customer', 'AccountController::index');
 $routes->get('/logout', 'SigninController::logout');

@@ -33,6 +33,9 @@
       <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
         Total
       </th>
+      <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        Aksi
+      </th>
     </tr>
   </thead>
   <tbody class="bg-white divide-y divide-gray-200">
@@ -68,6 +71,11 @@
           </td>
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="text-sm text-gray-900"><?php echo number_format($subtotal) ?></div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+          <a class="bg-red-500 p-3 rounded-3xl text-white hover:bg-red-300 hover:text-red-500" href="<?php echo base_url('cart/remove/' . $value['identifier']); ?>">
+            Hapus
+          </a>
           </td>
         </tr>
     <?php } ?>
