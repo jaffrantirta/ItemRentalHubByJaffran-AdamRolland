@@ -8,6 +8,11 @@
                 <strong class="text-4xl">Selamat datang</strong>
                 <small>Masuk terlebih dahulu! Jika bekum memiliki akun <a class="text-blue-500 hover:text-blue-300" href="<?= base_url(); ?>/signup">klik disini</a></small>
             </div>
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="rounded-full my-3 p-3 text-center bg-red-400">
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
             <?php if (isset($validation)) : ?>
                 <div class="rounded-full my-3 p-3 text-center bg-amber-400">
                     <?= $validation->listErrors() ?>

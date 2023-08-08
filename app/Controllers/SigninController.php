@@ -47,11 +47,11 @@ class SigninController extends BaseController
                 return redirect()->to('/profile');
             }
         } else {
-            $session->setFlashdata('msg', 'Password is incorrect.');
+            $session->setFlashdata('error', 'Password salah.');
             return redirect()->to('/signin');
         }
     } else {
-        $session->setFlashdata('msg', 'Email does not exist.');
+        $session->setFlashdata('error', 'Email tidak terdaftar.');
         return redirect()->to('/signin');
     }
 }
