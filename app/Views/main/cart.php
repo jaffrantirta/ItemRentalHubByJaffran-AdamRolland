@@ -3,6 +3,11 @@
 <?= $this->section('content') ?>
 
 <div class='p-10'>
+<?php if (session()->getFlashdata('error')) : ?>
+                <div class="rounded-full my-3 p-3 text-center bg-red-400">
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
   <?php if(session()->get('cart') ===  null){ ?>
     <div class="flex justify-center">
       <img class="w-64" src="<?php echo isset($item['image']) && !empty($item['image']) ? base_url('/uploads/'.$item['image']) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png'; ?>" />

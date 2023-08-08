@@ -50,6 +50,12 @@ class TransactionController extends BaseController
         if (session()->get('id') === null) return redirect()->to('/signin');
         $transactionModel = new Transaction();
         $transactionModel->db->transStart();
+        $cart = session()->get('cart');
+        $session = session();
+        if(empty($cart)){
+            $session->setFlashdata('error', 'Keranjang kosong.');
+            return redirect()->to('/cart');
+        }
         $transactionData = [
             'user_id' => session()->get('id'),
             'reference_code' => time(),
@@ -60,7 +66,6 @@ class TransactionController extends BaseController
         ];
         $transactionModel->save($transactionData);
         $transactionId = $transactionModel->insertID();
-        $cart = session()->get('cart');
         $totalPrice = 0;
         foreach ($cart as $item) {
             $x = $item['item'];
