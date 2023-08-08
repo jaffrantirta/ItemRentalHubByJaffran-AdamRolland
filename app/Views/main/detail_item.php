@@ -21,11 +21,11 @@
             <input name="item_id" value="<?php echo $item['id'] ?>" hidden/>
             <div>
                 <label>Tanggal ambil</label>
-            <input name="start_date" type="date" class="border-2 rounded-lg text-center"/>
+            <input name="start_date" min="<?= date('Y-m-d') ?>" type="date" class="border-2 rounded-lg text-center"/>
             </div>
             <div>
                 <label>Tanggal kembali</label>
-            <input name="end_date" type="date" class="border-2 rounded-lg text-center"/>
+            <input name="end_date" min="<?= date('Y-m-d', strtotime('+1 day')) ?>" type="date" class="border-2 rounded-lg text-center"/>
             </div>
             <div class="">
                 <label>Jumlah</label>
